@@ -1,0 +1,41 @@
+
+
+int led1 = A5; 
+
+int photoresistor = A0;
+int analogValue;
+
+int led2 = D7; 
+void setup() {
+
+ 
+
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(photoresistor, INPUT);
+  Particle.variable("analogValue", &analogValue, INT);
+  Particle.variable("photoresistor", &photoresistor, INT);
+ 
+
+}
+
+
+void loop() {
+  
+  analogValue = analogRead(photoresistor);
+  if(analogValue > 30)
+  {
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);  
+  }
+  
+  else
+  {
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH); 
+  }
+
+  
+}
+
+
